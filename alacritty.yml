@@ -1,0 +1,22 @@
+import:
+  - ~/.alacritty-colorscheme/themes/xterm.yaml
+
+font:
+  normal:
+    family: Iosevka
+    style: Regular
+
+  bold:
+    family: Iosevka
+    style: Bold
+
+  italic:
+    family: Iosevka
+    style: Italic
+
+  bold_italic:
+    family: Iosevka
+    style: Bold Italic
+
+  size: 9
+
