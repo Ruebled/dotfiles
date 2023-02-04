@@ -76,7 +76,7 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 "disable mouse
-set mouse=a
+set mouse=
 
 nmap <ScrollWheelUp> <nop>
 nmap <S-ScrollWheelUp> <nop>
