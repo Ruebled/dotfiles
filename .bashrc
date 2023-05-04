@@ -6,6 +6,7 @@ task
 PATH=$PATH:/opt/gnat/bin
 PATH=$PATH:/home/archy/.local/lib/python3.10/site-packages/
 PATH=$PATH:/home/archy/.local/bin
+PATH=$PATH:/home/archy/Repos/aria2/src
 
 # If not running interactively, don't do anything
 case $- in
@@ -23,7 +24,11 @@ mkdircd (){
 	cd "$1"
 }
 
+#pushd ~/Learning > /dev/null
+#pushd ~ > /dev/null
+
 #aliases
+alias py='python'
 alias gvim='vim'
 alias vifm='vifm .'
 alias cl='clear'
@@ -31,12 +36,13 @@ alias ex='exit'
 alias sus='systemctl suspend && slock'
 alias suspend='systemctl suspend'
 alias ceasy='nmcli device wifi list --rescan yes&&nmcli device wifi connect Easy password xiqi8868'
+alias cbibl='nmcli device wifi connect  FC:34:97:9C:36:A4 password M2208L103'
 alias ctp='nmcli device wifi list --rescan yes&&nmcli device wifi connect TP-Link_1F66 password infomat0211'
 alias chh='nmcli device wifi list --rescan yes&&nmcli device wifi connect cezar_365 password P1H32015'
 alias ch='nmcli device wifi list --rescan yes&&nmcli device wifi connect MTC_03D password Q91U2F6006314'
 alias show='nmcli device wifi show'
-alias CounterSide='cd /home/archy/.wine/drive_c/Counterside-SEA/client && ./CounterSide.exe && cd ~'
-alias batlevel='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+#alias CounterSide='cd /home/archy/.wine/drive_c/Counterside-SEA/client && ./CounterSide.exe && cd ~'
+alias batlevel='upower -i /org/freedesktop/UPower/devices/battery_BAT0 && timedatectl|grep Local|sed "s/\ *//">> ~/.battery_log &&  upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep "capacity:"|sed "s/\ *//" >> ~/.battery_log && echo ___>> ~/.battery_log && cat .battery_log | tail'
 #end aliases
 
 # See bash(1) for more options
@@ -180,3 +186,6 @@ if ! shopt -oq posix; then
 fi
 
 export QSYS_ROOTDIR="/home/ruebled/intelFPGA_lite/21.1/quartus/sopc_builder/bin"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

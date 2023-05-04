@@ -52,6 +52,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'vimwiki/vimwiki'
 call vundle#end()            " required
 
 set rtp+={repository_root}/powerline/bindings/vim
@@ -77,6 +78,7 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 "disable mouse
 set mouse=
+set ttymouse=
 
 nmap <ScrollWheelUp> <nop>
 nmap <S-ScrollWheelUp> <nop>
@@ -116,3 +118,19 @@ vmap <C-ScrollWheelLeft> <nop>
 vmap <ScrollWheelRight> <nop>
 vmap <S-ScrollWheelRight> <nop>
 vmap <C-ScrollWheelRight> <nop>
+
+"disable autocomplete with // on 'O or 'o'
+"nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
+"nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
+
+"disable autocomplete on 'O' or 'o' especially for '//'
+autocmd FileType * set formatoptions-=r
+autocmd FileType * set formatoptions-=o
+
+set completeopt=longest,menuone
+
+"vimwiki settings
+"let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+"let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
+let g:vimwiki_conceallevel = 0
+let g:vimwiki_url_maxsave = 0
