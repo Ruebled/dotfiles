@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-task
+# task # used for task management
 
 PATH=$PATH:/opt/gnat/bin
 PATH=$PATH:/home/archy/.local/lib/python3.10/site-packages/
@@ -15,14 +15,14 @@ case $- in
 esac
 
 
-if command -v tmux &>/dev/null && [[ $DISPLAY ]] && [[ -n "$PS1" ]] && [[ ! $TERM =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z $TMUX ];then
-	exec tmux;
-fi
+#if command -v tmux &>/dev/null && [[ $DISPLAY ]] && [[ -n "$PS1" ]] && [[ ! $TERM =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z $TMUX ];then
+#	exec tmux;
+#fi
 
-mkdircd (){
-	mkdir "$1"&&
-	cd "$1"
-}
+#mkdircd (){
+#	mkdir "$1"&&
+#	cd "$1"
+#}
 
 #pushd ~/Learning > /dev/null
 #pushd ~ > /dev/null
@@ -136,26 +136,26 @@ esac
 [ "$NEWLINE_BEFORE_PROMPT" = no ] && PROMPT_COMMAND="PROMPT_COMMAND=echo"
 
 # enable color support of ls, less and man, and also add handy aliases
-#if [ -x /usr/bin/dircolors ]; then
-#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#    alias ls='ls --color=auto'
-#    #alias dir='dir --color=auto'
-#    #alias vdir='vdir --color=auto'
-#
-#    alias grep='grep --color=auto'
-#    alias fgrep='fgrep --color=auto'
-#    alias egrep='egrep --color=auto'
-#    alias diff='diff --color=auto'
-#    alias ip='ip --color=auto'
-#
-#    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-#    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-#    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-#    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
-#    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-#    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-#    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-#fi
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
+    alias ip='ip --color=auto'
+
+    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
+    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -189,3 +189,4 @@ export QSYS_ROOTDIR="/home/ruebled/intelFPGA_lite/21.1/quartus/sopc_builder/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:/opt/raven-reader"

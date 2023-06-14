@@ -134,3 +134,9 @@ set completeopt=longest,menuone
 "let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_url_maxsave = 0
+
+function! Formatonsave()
+	let l:formatdiff = 1
+	py3f /usr/share/clang/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()

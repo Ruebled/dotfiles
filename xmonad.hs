@@ -28,6 +28,6 @@ myAdditionalKeys =
       ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up"),
       ("<XF86AudioMute>", spawn "pulseaudio-ctl mute"),
       ("M-S-q", spawn "systemctl suspend && slock"),
-      ("M-<F6>", spawn "pacmd set-sink-port 0 analog-output-headphones"),
-      ("M-<F7>", spawn "pacmd set-sink-port 0 analog-output-speaker")
+      ("M-<F6>", spawn "pulseaudio-ctl mute yes && pacmd set-sink-port 0 analog-output-headphones && pulseaudio-ctl mute no"),
+      ("M-<F7>", spawn "pulseaudio-ctl mute yes && pacmd set-sink-port 0 analog-output-speaker && pulseaudio-ctl mute no")
     ]
