@@ -29,5 +29,8 @@ myAdditionalKeys =
       ("<XF86AudioMute>", spawn "pulseaudio-ctl mute"),
       ("M-S-q", spawn "systemctl suspend && slock"),
       ("M-<F6>", spawn "pulseaudio-ctl mute yes && pacmd set-sink-port 0 analog-output-headphones && pulseaudio-ctl mute no"),
-      ("M-<F7>", spawn "pulseaudio-ctl mute yes && pacmd set-sink-port 0 analog-output-speaker && pulseaudio-ctl mute no")
+      ("M-<F7>", spawn "pulseaudio-ctl mute yes && pacmd set-sink-port 0 analog-output-speaker && pulseaudio-ctl mute no"),
+      ("M-S-p", spawn "passmenu"),
+	  ("M-C-1", spawn "bluetoothctl connect E4:90:FD:48:91:0E"),
+	  ("M-C-0", spawn "bluetoothctl disconnect E4:90:FD:48:91:0E")
     ]

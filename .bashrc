@@ -28,6 +28,7 @@ esac
 #pushd ~ > /dev/null
 
 #aliases
+alias ai='ffplay -nodisp -autoexit /home/archy/Documents/Edited_files/Aia_e.mp3 &'
 alias py='python'
 alias gvim='vim'
 alias vifm='vifm .'

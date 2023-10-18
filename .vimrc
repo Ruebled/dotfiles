@@ -8,6 +8,7 @@ set tabstop=4
 "set expandtab
 "set softtabstop=0 noexpandtab
 set shiftwidth=4 "smarttab
+set nowrap
 
 "set cursorline
 "set wildmenu
@@ -132,7 +133,7 @@ set completeopt=longest,menuone
 "vimwiki settings
 "let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 "let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
-let g:vimwiki_conceallevel = 0
+let g:vimwiki_conceallevel = 2
 let g:vimwiki_url_maxsave = 0
 
 function! Formatonsave()
@@ -140,3 +141,7 @@ function! Formatonsave()
 	py3f /usr/share/clang/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+
+"set Caps_Lock off on esc or Ctrl+[
+"map <C-[> :!xdotool keyup Caps_Lock <enter>
+"map <ESC> :!xdotool keyup Caps_Lock <enter>
