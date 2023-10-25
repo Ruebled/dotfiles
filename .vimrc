@@ -1,30 +1,20 @@
+"Rest of config, comments later
 set hidden
 set backup
 set relativenumber
 syntax on
 set background=dark
 set tabstop=4
-"set autoindent
-"set expandtab
-"set softtabstop=0 noexpandtab
-set shiftwidth=4 "smarttab
+set shiftwidth=4
 set nowrap
 
-"set cursorline
-"set wildmenu
 set laststatus=2
-"set lazyredraw
-"set showmatch
-"set showcmd
-"set incsearch
+set lazyredraw
 highlight VertSplit cterm=NONE
 set showtabline=2
 set noshowmode
-"set noshowcmd
-"hi clear CursorLine
 let loaded_matchparen = 1
 nnoremap <silent> <esc> :noh<cr><esc>
-"set rtp+=/usr/share/powerline/bindings/vim
 set hlsearch
 
 set directory=~/.vim/.swp//
@@ -35,26 +25,18 @@ set foldenable
 set foldlevelstart=10
 
 set foldnestmax=10
-nnoremap <space> za
 set foldmethod=indent
-nnoremap j gj
-nnoremap k gk
 
-nnoremap B ^
-nnoremap E $
-noremap gV `[v`]
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"Vundle config and PluginInstall
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vimwiki/vimwiki'
-call vundle#end()            " required
+call vundle#end()
 
 set rtp+={repository_root}/powerline/bindings/vim
 
@@ -66,7 +48,9 @@ filetype plugin on
 set t_Co=256
 
 "disable F1 help
-noremap <F1> <nop>
+nnoremap <F1> <nop>
+inoremap <F1> <nop>
+vnoremap <F1> <nop>
 
 " auto pair brackets
 "inoremap <left>
@@ -77,52 +61,6 @@ noremap <F1> <nop>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-"disable mouse
-set mouse=
-set ttymouse=
-
-nmap <ScrollWheelUp> <nop>
-nmap <S-ScrollWheelUp> <nop>
-nmap <C-ScrollWheelUp> <nop>
-nmap <ScrollWheelDown> <nop>
-nmap <S-ScrollWheelDown> <nop>
-nmap <C-ScrollWheelDown> <nop>
-nmap <ScrollWheelLeft> <nop>
-nmap <S-ScrollWheelLeft> <nop>
-nmap <C-ScrollWheelLeft> <nop>
-nmap <ScrollWheelRight> <nop>
-nmap <S-ScrollWheelRight> <nop>
-nmap <C-ScrollWheelRight> <nop>
-
-imap <ScrollWheelUp> <nop>
-imap <S-ScrollWheelUp> <nop>
-imap <C-ScrollWheelUp> <nop>
-imap <ScrollWheelDown> <nop>
-imap <S-ScrollWheelDown> <nop>
-imap <C-ScrollWheelDown> <nop>
-imap <ScrollWheelLeft> <nop>
-imap <S-ScrollWheelLeft> <nop>
-imap <C-ScrollWheelLeft> <nop>
-imap <ScrollWheelRight> <nop>
-imap <S-ScrollWheelRight> <nop>
-imap <C-ScrollWheelRight> <nop>
-
-vmap <ScrollWheelUp> <nop>
-vmap <S-ScrollWheelUp> <nop>
-vmap <C-ScrollWheelUp> <nop>
-vmap <ScrollWheelDown> <nop>
-vmap <S-ScrollWheelDown> <nop>
-vmap <C-ScrollWheelDown> <nop>
-vmap <ScrollWheelLeft> <nop>
-vmap <S-ScrollWheelLeft> <nop>
-vmap <C-ScrollWheelLeft> <nop>
-vmap <ScrollWheelRight> <nop>
-vmap <S-ScrollWheelRight> <nop>
-vmap <C-ScrollWheelRight> <nop>
-
-"disable autocomplete with // on 'O or 'o'
-"nnoremap <expr> O getline('.') =~ '^\s*//' ? 'O<esc>S' : 'O'
-"nnoremap <expr> o getline('.') =~ '^\s*//' ? 'o<esc>S' : 'o'
 
 "disable autocomplete on 'O' or 'o' especially for '//'
 autocmd FileType * set formatoptions-=r
@@ -142,6 +80,17 @@ function! Formatonsave()
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-"set Caps_Lock off on esc or Ctrl+[
-"map <C-[> :!xdotool keyup Caps_Lock <enter>
-"map <ESC> :!xdotool keyup Caps_Lock <enter>
+"configure netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+nnoremap E :Vexplore<CR>
+
+"highlight the characters that pass 80 lenght line
+match ErrorMsg '\%>80v.\+'
+
+"Disable mouse scrolling
+set mouse=
+set ttymouse=
