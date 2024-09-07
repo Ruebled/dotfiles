@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = master
+[user]
+	email = dan.canevschii@gmail.com
+	name = Ruebled
+[commit]
+	gpgsign = true

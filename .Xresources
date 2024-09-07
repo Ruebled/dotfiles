@@ -6,3 +6,4 @@ xterm*font: *-fixed-*-*-*-18-*
 Sxiv.background: #000000
 
 XTerm*selectToClipboard: true
+

@@ -3,10 +3,10 @@
 # for examples
 # task # used for task management
 
-PATH=$PATH:/opt/gnat/bin
-PATH=$PATH:/home/archy/.local/lib/python3.10/site-packages/
-PATH=$PATH:/home/archy/.local/bin
-PATH=$PATH:/home/archy/Repos/aria2/src
+PATH=$PATH:/home/ruebled/.local/bin
+PATH=$PATH:/usr/bin
+PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin
 
 # If not running interactively, don't do anything
 case $- in
@@ -27,24 +27,6 @@ esac
 #pushd ~/Learning > /dev/null
 #pushd ~ > /dev/null
 
-#aliases
-alias ai='ffplay -nodisp -autoexit /home/archy/Documents/Edited_files/Aia_e.mp3 &'
-alias py='python'
-alias gvim='vim'
-alias vifm='vifm .'
-alias cl='clear'
-alias ex='exit'
-alias sus='systemctl suspend && slock'
-alias suspend='systemctl suspend'
-alias ceasy='nmcli device wifi list --rescan yes&&nmcli device wifi connect Easy password xiqi8868'
-alias cbibl='nmcli device wifi connect  FC:34:97:9C:36:A4 password M2208L103'
-alias ctp='nmcli device wifi list --rescan yes&&nmcli device wifi connect TP-Link_1F66 password infomat0211'
-alias chh='nmcli device wifi list --rescan yes&&nmcli device wifi connect cezar_365 password P1H32015'
-alias ch='nmcli device wifi list --rescan yes&&nmcli device wifi connect MTC_03D password Q91U2F6006314'
-alias show='nmcli device wifi show'
-#alias CounterSide='cd /home/archy/.wine/drive_c/Counterside-SEA/client && ./CounterSide.exe && cd ~'
-alias batlevel='upower -i /org/freedesktop/UPower/devices/battery_BAT0 && timedatectl|grep Local|sed "s/\ *//">> ~/.battery_log &&  upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep "capacity:"|sed "s/\ *//" >> ~/.battery_log && echo ___>> ~/.battery_log && cat .battery_log | tail'
-#end aliases
 
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -53,7 +35,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=
+HISTSIZE=100000
 HISTFILESIZE=
 
 # check the window size after each command and, if necessary,
@@ -114,7 +96,7 @@ if [ "$color_prompt" = yes ]; then
     fi
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV:+(\[\033[0;1m\]$(basename $VIRTUAL_ENV)'$prompt_color')}('$info_color'\u${prompt_symbol}\h'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color']\n'$prompt_color'└─'$info_color'\$\[\033[0m\] ';;
+			PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV:+(\[\033[0;1m\]$(basename $VIRTUAL_ENV)'$prompt_color')}('$info_color'\u${prompt_symbol}\h'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color'] $(parse_git_branch)\n'$prompt_color'└─'$info_color'\$\[\033[0m\] ';;
         oneline)
             PS1='${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV)) }${debian_chroot:+($debian_chroot)}'$info_color'\u@\h\[\033[00m\]:'$prompt_color'\[\033[01m\]\w\[\033[00m\]\$ ';;
         backtrack)
@@ -139,16 +121,6 @@ esac
 # enable color support of ls, less and man, and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias diff='diff --color=auto'
-    alias ip='ip --color=auto'
-
     export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
     export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
     export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
@@ -160,11 +132,6 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -186,8 +153,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export QSYS_ROOTDIR="/home/ruebled/intelFPGA_lite/21.1/quartus/sopc_builder/bin"
+# enable colored prompt for git branches
+# using parse_git_branch
+parse_git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$PATH:/opt/raven-reader"
+export EDITOR=vim
+

@@ -1,0 +1,60 @@
+import = ["/home/ruebled/.config/alacritty/themes/citylights.toml"]
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.8"
+
+[font]
+size = 8
+
+[font.normal]
+family = "Iosevka"
+style = "Regular"
+
+[font.bold]
+family = "Iosevka"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka"
+style = "Italic"
+
+[font.bold_italic]
+family = "Iosevka"
+style = "Bold Italic"
+
+[window]
+decorations = "None"
+opacity = 0.5
+padding = { x = 0, y = 0 }
+
+# [bell]
+# animation = "EaseOutSine"
+# duration = 1000
+# 
+# [bell.command]
+# program = "notify-send"
+# args = ["Messed up",]
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+blink_interval = 750 
+unfocused_hollow = true
+
+[cursor.style]
+shape = "Beam"
+blinking = "On"
+
+[mouse]
+hide_when_typing = true
+bindings = [
+		{ mouse = "Middle", mods = "None", action = "Paste" },
+]
+
+[keyboard]
+bindings = [
+		{ key = "J", mods = "Control", action = "ScrollPageDown" },
+		{ key = "K", mods = "Control", action = "ScrollPageUp" },
+]
+

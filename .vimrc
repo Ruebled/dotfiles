@@ -6,7 +6,7 @@ syntax on
 set background=dark
 set tabstop=4
 set shiftwidth=4
-set nowrap
+set wrap
 
 set laststatus=2
 set lazyredraw
@@ -16,6 +16,7 @@ set noshowmode
 let loaded_matchparen = 1
 nnoremap <silent> <esc> :noh<cr><esc>
 set hlsearch
+set backspace=indent,eol,start
 
 set directory=~/.vim/.swp//
 set backupdir=~/.vim/.backup//
@@ -30,12 +31,19 @@ set foldmethod=indent
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let g:airline_theme='minimalist'
+
+set clipboard+=unnamedplus
+
 "Vundle config and PluginInstall
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'lilydjwg/colorizer'
 call vundle#end()
 
 set rtp+={repository_root}/powerline/bindings/vim
@@ -69,16 +77,16 @@ autocmd FileType * set formatoptions-=o
 set completeopt=longest,menuone
 
 "vimwiki settings
-"let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
-"let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'},
+			\{'path': '~/documents/Diploma_Project/Research/', 'syntax': 'markdown', 'ext': '.wiki'}]
 let g:vimwiki_conceallevel = 2
 let g:vimwiki_url_maxsave = 0
 
-function! Formatonsave()
-	let l:formatdiff = 1
-	py3f /usr/share/clang/clang-format.py
-endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+"function! Formatonsave()
+"	let l:formatdiff = 1
+"	py3f /usr/share/clang/clang-format.py
+"endfunction
+"autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
 "configure netrw
 let g:netrw_banner = 0
@@ -94,3 +102,8 @@ match ErrorMsg '\%>80v.\+'
 "Disable mouse scrolling
 set mouse=
 set ttymouse=
+
+let g:airline_minimalist_bg='dark'
+let g:airline#extensions#tabline#enabled = 1
+
+let g:colorizer_maxlines = 1000
